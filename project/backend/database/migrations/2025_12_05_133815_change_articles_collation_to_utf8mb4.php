@@ -7,7 +7,7 @@ return new class extends Migration
 {
     public function up()
     {
-        // Changer la collation de la table articles vers utf8mb4_unicode_ci
+        // Changement de la collation de la table articles vers utf8mb4_unicode_ci
         // qui gère correctement les accents
         DB::statement('ALTER TABLE articles CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci');
     }
