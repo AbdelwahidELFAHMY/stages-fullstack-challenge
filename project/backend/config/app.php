@@ -67,7 +67,9 @@ return [
     |
     */
 
-    'timezone' => 'America/Los_Angeles',
+    //'timezone' => 'America/Los_Angeles',
+    // Changement de timezone de 'America/Los_Angeles' par 'Europe/Paris'
+    'timezone' =>  'Europe/Paris',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +82,9 @@ return [
     |
     */
 
-    'locale' => 'en',
+    //'locale' => 'en',
+    // changement de locale de en a fr
+    'locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +110,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    //'faker_locale' => 'en_US',
+    'faker_locale' => 'fr_FR',
 
     /*
     |--------------------------------------------------------------------------
