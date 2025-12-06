@@ -40,7 +40,7 @@ function ImageUpload() {
       setSelectedFile(null);
     } catch (err) {
       if (err.response?.status === 413) {
-        setError('❌ Erreur 413 : Image trop volumineuse ! La limite est de 2MB.');
+        setError('❌ Erreur 413 : Image trop volumineuse ! La limite est de 10MB.');
       } else {
         setError(`❌ Erreur lors de l'upload : ${err.message}`);
       }
@@ -54,7 +54,7 @@ function ImageUpload() {
     <div className="card">
       <h3>📸 Upload d'Image</h3>
       <p style={{ color: '#7f8c8d', fontSize: '0.9em', marginBottom: '1rem' }}>
-        Testez l'upload d'images (limite : 2MB)
+        Testez l'upload d'images (limite : 10MB)
       </p>
 
       <div style={{ marginBottom: '1rem' }}>
