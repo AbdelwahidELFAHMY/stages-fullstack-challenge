@@ -9,13 +9,17 @@ function ArticleCard({ article, onDelete }) {
     
     const date = new Date(dateString);
     
-    return date.toLocaleDateString('en-US', {
+    //return date.toLocaleDateString('en-US', {
+    // Format français avec timezone Europe/Paris
+    return date.toLocaleDateString('fr-FR', {
       year: 'numeric',
-      month: '2-digit',
+      //month: '2-digit',
+      month: 'long',
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      timeZone: 'America/Los_Angeles'
+      //timeZone: 'America/Los_Angeles'
+      timeZone: 'Europe/Paris'
     });
   };
 
