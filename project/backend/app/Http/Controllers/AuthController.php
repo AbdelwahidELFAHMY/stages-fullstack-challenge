@@ -18,13 +18,20 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
+        // recuperation de l'utilisateur correspond
         $user = User::where('email', $credentials['email'])->first();
 
+        // Renvoie d'un Message d'erreur si  y a pas de'user avec les credentials specifies
         if (!$user) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        if ($user->password !== $credentials['password']) {
+        /*if ($user->password !== $credentials['password']) {
+            return response()->json(['message' => 'Invalid credentials'], 401);
+        }*/
+
+        //  Comparaison de Hashe de password avec celui dans la base de donnees (qui est hashe) ou lieu de compare les textes en  claire
+        if (!Hash::check($credentials['password'], $user->password)) {
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
@@ -52,7 +59,10 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => $validated['password'],
+            // Faille de securite : Enregistrement des password en claire dans la base de donnees
+            //'password' => $validated['password'],
+            // Password Hashe avant de l'enregistrer en base
+            'password' => Hash::make($validated['password']),
         ]);
 
         return response()->json([
