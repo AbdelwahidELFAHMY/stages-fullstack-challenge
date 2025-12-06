@@ -49,12 +49,18 @@ class CommentController extends Controller
         $comment->delete();
 
         $remainingComments = Comment::where('article_id', $articleId)->get();
-        $firstComment = $remainingComments[0];
+        
+        // firstComment reçois le premier elements de remainingComments
+        // mais si il y a qu'une commentaire, apres la suppressin remainingComments sera vide d'ou l'erreur Undefined array key
+        //$firstComment = $remainingComments[0];
 
         return response()->json([
             'message' => 'Comment deleted successfully',
             'remaining_count' => $remainingComments->count(),
-            'first_remaining' => $firstComment,
+            //'first_remaining' => $firstComment,
+            // Remplace par cette ligne, qui utilise Eloquent des collections
+            // il retourne null si remainingComments est vide, donc pas de erreur
+            'first_remaining' => $remainingComments->first(), 
         ]);
     }
 
